@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/blog', require('./src/routes/postRoute'))
+app.use('/api/v1/auth', require('./src/routes/userRoute'))
 
 app.listen(process.env.PORT, (err) =>
     err ?
