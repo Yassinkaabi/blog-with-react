@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation  } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-function BasicExample() {
+function NavbarTest() {
 
     const navigate = useNavigate();
-    const location = useLocation();
-
+    
     const handleLogout = () => {
-        // Supprimer le token, isAuth du stockage local
+        // Supprimer token, isAuth du stockage local
         localStorage.removeItem('token');
         localStorage.removeItem('isAuth');
         // Rediriger vers la page de connexion
         navigate('/auth/login');
     };
-
+    
+    const location = useLocation();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -38,7 +37,7 @@ function BasicExample() {
                             <Nav.Link><Link to={'auth/login'}>Log in</Link></Nav.Link>
                         </>
                     ) : (
-                        <Nav.Link><p onClick={handleLogout}>Log out</p></Nav.Link>
+                        <Nav.Link><button className='btn btn-danger' onClick={handleLogout}>Log out</button></Nav.Link>
                     )}
                 </Nav>
             </Container>
@@ -46,4 +45,4 @@ function BasicExample() {
     );
 }
 
-export default BasicExample;
+export default NavbarTest;

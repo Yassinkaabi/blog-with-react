@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -37,6 +37,13 @@ const Login = () => {
             }
         }
     };
+
+    useEffect(() => {
+        const isAuth = localStorage.getItem('isAuth') || 'false'; // Assurez-vous de récupérer une chaîne de caractères
+        if (isAuth === 'true') {
+            navigate('/blogs');
+        }
+    }, []);
 
     return (
         <div className='container mt-5'>

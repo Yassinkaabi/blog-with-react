@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -34,6 +34,13 @@ const Register = () => {
             }
         }
     };
+
+    useEffect(() => {
+        const isAuth = localStorage.getItem('isAuth') || 'false';
+        if (isAuth === 'true') {
+            navigate('/blogs');
+        }
+    }, []);
 
     return (
         <>

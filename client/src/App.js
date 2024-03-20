@@ -4,13 +4,13 @@ import Blog from './components/Blog';
 import CreatePost from './components/CreatePost';
 import Login from './auth/Login';
 import Register from './auth/Register';
-import BasicExample from './components/Nav';
+import NavbarTest from './components/Nav';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <BasicExample />
+        <NavbarTest />
         <Routes>
           <Route path='/blogs' element={<Blog />} />
           <Route path='/blog/create' element={<CreatePost />} />
