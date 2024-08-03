@@ -25,15 +25,30 @@ const PostSchema = mongoose.Schema({
         type: Boolean,
         enum: [true, false],
         default: true
-    }
+    },
+    image: {
+        public_id: {
+            type: String,
+            required: true
+        },
+        url: {
+            type: String,
+            required: true
+        }
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
 },
     {
         timestamps: true
     });
 
-    PostSchema.method('toJson', function () {
-    const { __v, _id, ...object } = this.toObject();
-    object.id = _id;
-    return object;
-})
+// PostSchema.method('toJson', function () {
+//     const { __v, _id, ...object } = this.toObject();
+//     object.id = _id;
+//     return object;
+// })
 module.exports = mongoose.model('Post', PostSchema);

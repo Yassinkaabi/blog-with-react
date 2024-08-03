@@ -7,6 +7,8 @@ const CreatePost = () => {
     const navigate = useNavigate();
     const [newBlog, setNewBlog] = useState({});
 
+    const userID = localStorage.getItem('userId')
+
     const handleChange = (e) => {
         setNewBlog({
             ...newBlog,
@@ -16,14 +18,20 @@ const CreatePost = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
-            await axios.post('http://localhost:5000/api/blog/posts', newBlog);
+            const newBlogWithUser = {
+                ...newBlog,
+                user: userID
+            };
+
+            await axios.post('http://localhost:5000/api/blog/create', newBlogWithUser);
             navigate('/blogs');
         } catch (error) {
             console.error('Error creating blog:', error);
         }
     };
+    
 
     return (
         <div className="container mt-5">
@@ -61,6 +69,15 @@ const CreatePost = () => {
                         placeholder="Enter author"
                     />
                 </div>
+
+                {/* <div className="form-control"> */}
+                    <input
+                        type="hidden"
+                        name="user"
+                        value={userID}
+                        onChange={handleChange}
+                    />
+                {/* </div> */}
 
                 <div className="form-control">
                     <label>Slug</label>

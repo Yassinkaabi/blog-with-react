@@ -1,0 +1,31 @@
+.notifications-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.notification {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.notification p {
+    margin: 0;
+}
+
+.notification small {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.notification div {
+    display: flex;
+    gap: 10px;
+}
